@@ -3,7 +3,10 @@ class MessageChannel < ApplicationCable::Channel
     stream_from "message"
   end
 
-  def unsubscribed
-    
+  def unsubscribed; end
+
+  def receive(data)
+    data["user"] = current_user
+    ActionCable.server.broadcast("message", data)
   end
 end

@@ -1,2 +1,11 @@
-<h1>Hangouts#index</h1>
-<p>Find me in app/views/hangouts/index.html.erb</p>
+<h1 class="font-bold text-xl text-center mb-4">Hangouts</h1>
+
+<div id="message-display" class="h-3/4 overflow-auto">
+</div>
+
+<form action="" id="message-form" class="flex flex-col items-center">
+  <input type="text" id="message-input" class="border border-black mb-2">
+  <input type="submit"
+         value="Send Message"
+         class="bg-slate-800 py-2 px-4 text-white rounded-lg hover:cursor-pointer">
+</form>
