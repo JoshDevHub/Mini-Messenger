@@ -1,11 +1,26 @@
-<h1 class="font-bold text-xl text-center mb-4">Hangouts</h1>
+<main class="flex flex-col items-center">
+  <h1 class="font-bold text-xl text-center mb-4">Hangouts</h1>
 
-<div id="message-display" class="h-3/4 overflow-auto">
-</div>
+  <div id="message-display" class="h-3/4 overflow-auto">
 
-<form action="" id="message-form" class="flex flex-col items-center">
-  <input type="text" id="message-input" class="border border-black mb-2">
-  <input type="submit"
-         value="Send Message"
-         class="bg-slate-800 py-2 px-4 text-white rounded-lg hover:cursor-pointer">
-</form>
+    <% @messages.each do |message| %>
+      <article>
+        <div class="font-bold">
+          <%= message.user.email %>
+        </div>
+        <div>
+          <%= message.body %>
+        </div>
+      </article>
+    <% end %>
+
+  </div>
+
+
+  <div id="message-form">
+    <%= form_with model: @message, local: false, html: { class: "flex flex-col items-center" } do |form| %>
+      <%= form.text_field :body, id: "message-input", class: "border border-black mb-2" %>
+      <%= form.submit "Send Message", class: "bg-slate-800 py-2 w-1/2 text-white rounded-lg hover:cursor-pointer" %>
+    <% end %>
+  </div>
+</main>
