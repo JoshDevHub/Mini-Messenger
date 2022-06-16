@@ -11,6 +11,20 @@
   </head>
 
   <body>
+    <header>
+      <nav class="bg-slate-900 flex justify-end py-4 mb-4" aria-label="main navigation">
+        <% if current_user %>
+          <%= link_to "Logout",
+                      destroy_user_session_path,
+                      method: :delete,
+                      class: "text-lg" %>
+        <% else %>
+          <%= link_to "Login",
+                      new_user_session_path,
+                      class: "text-lg text-blue-300 mr-4 hover:underline" %>
+        <% end %>
+      </nav>
+    </header>
     <%= yield %>
   </body>
 </html>
